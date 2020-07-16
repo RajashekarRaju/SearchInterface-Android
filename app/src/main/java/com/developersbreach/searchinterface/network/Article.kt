@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Article(
     val id: Int,
-    val banner: String,
     val name: String,
+    val banner: String,
     val description: String
 ) : Parcelable
