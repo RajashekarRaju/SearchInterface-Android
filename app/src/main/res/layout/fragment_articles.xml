@@ -17,4 +17,12 @@
         tools:itemCount="12"
         tools:listitem="@layout/item_article" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/search_fab"
+        android:src="@android:drawable/ic_menu_search"
+        android:layout_margin="16dp"
+        android:layout_gravity="end|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </FrameLayout>
