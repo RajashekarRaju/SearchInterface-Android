@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SearchViewModel : ViewModel() {
+class ArticlesViewModel : ViewModel() {
 
     private val _data = MutableLiveData<List<Article>>()
     val data: LiveData<List<Article>>

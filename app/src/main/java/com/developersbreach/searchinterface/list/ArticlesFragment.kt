@@ -11,16 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.developersbreach.searchinterface.R
 
-class SearchFragment : Fragment() {
+class ArticlesFragment : Fragment() {
 
-    private lateinit var viewModel: SearchViewModel
+    private lateinit var viewModel: ArticlesViewModel
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_articles, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class SearchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ArticlesViewModel::class.java)
 
         viewModel.data.observe(viewLifecycleOwner, Observer { list ->
             val adapter = ArticleAdapter(list, itemClickListener)
@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
     }
 
     private val itemClickListener = ArticleAdapter.OnClickListener { article ->
-        Log.e("SearchAdapter", article.name)
+        Log.e("ArticlesAdapter", article.name)
     }
 
 }
