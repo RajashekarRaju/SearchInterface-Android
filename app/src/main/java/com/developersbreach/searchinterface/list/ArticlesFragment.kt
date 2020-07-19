@@ -1,7 +1,6 @@
 package com.developersbreach.searchinterface.list
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.developersbreach.searchinterface.R
+import com.developersbreach.searchinterface.detail.DetailFragment
 import com.developersbreach.searchinterface.search.SearchFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -33,19 +33,13 @@ class ArticlesFragment : Fragment() {
 
         view.findViewById<FloatingActionButton>(R.id.search_fab).setOnClickListener {
             val fragment = SearchFragment()
-            val fragmentManager: FragmentManager = parentFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, fragment)
-            fragmentTransaction.addToBackStack("ArticlesFragment")
-            fragmentTransaction.isAddToBackStackAllowed
-            fragmentTransaction.commit()
+            showFragment(fragment, "ArticlesFragment")
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ArticlesViewModel::class.java)
-
         viewModel.data.observe(viewLifecycleOwner, Observer { list ->
             val adapter = ArticleAdapter(list, itemClickListener)
             recyclerView.adapter = adapter
@@ -53,7 +47,16 @@ class ArticlesFragment : Fragment() {
     }
 
     private val itemClickListener = ArticleAdapter.OnClickListener { article ->
-        Log.e("ArticlesAdapter", article.name)
+        val fragment = DetailFragment.newInstance(article)
+        showFragment(fragment, "DetailFragment")
     }
 
+    private fun showFragment(fragment: Fragment, name: String) {
+        val fragmentManager: FragmentManager = parentFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.addToBackStack(name)
+        fragmentTransaction.isAddToBackStackAllowed
+        fragmentTransaction.commit()
+    }
 }
