@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.lifecycle.Observer
@@ -37,6 +38,10 @@ class SearchFragment : Fragment() {
         recyclerView = view.findViewById(R.id.search_recycler_view)
         noSearchResultsFound = view.findViewById(R.id.no_search_results_found_text)
         searchEditText = view.findViewById(R.id.article_search_edit_text)
+
+        view.findViewById<ImageView>(R.id.navigate_back_image_view).setOnClickListener {
+            parentFragmentManager.popBackStackImmediate("ArticlesFragment" , 1)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

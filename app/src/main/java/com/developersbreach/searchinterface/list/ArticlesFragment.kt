@@ -36,6 +36,8 @@ class ArticlesFragment : Fragment() {
             val fragmentManager: FragmentManager = parentFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment_container, fragment)
+            fragmentTransaction.addToBackStack("ArticlesFragment")
+            fragmentTransaction.isAddToBackStackAllowed
             fragmentTransaction.commit()
         }
     }

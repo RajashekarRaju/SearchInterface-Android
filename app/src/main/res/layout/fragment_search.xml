@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:fitsSystemWindows="true"
+    android:paddingTop="6dp"
     tools:context=".search.SearchFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:liftOnScroll="true"
-        app:liftOnScrollTargetViewId="@id/search_recycler_view">
+        android:layout_height="?attr/actionBarSize">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -44,7 +43,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -58,9 +56,7 @@
             android:padding="6dp"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:reverseLayout="true"
-            app:stackFromEnd="true"
-            tools:itemCount="6"
+            tools:itemCount="12"
             tools:listitem="@layout/item_search" />
 
         <TextView
